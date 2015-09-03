@@ -1,0 +1,115 @@
+package Google;
+
+
+/**
+ * Write a description of class SpecialString here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class SpecialString
+{
+    private String string = "";
+    
+    public SpecialString( String string)
+    {
+        this.string = string;
+    }
+    
+    public SpecialString()
+    {
+        this.string = "";
+    }
+    
+    public SpecialString stringSwitch()
+    {
+        SpecialString result_1 = new SpecialString("");
+        char[] result;
+        result = string.toCharArray();
+        
+        for(int i= 0; i < result.length; i++)
+        {
+            if( result[i] == '1')
+                result[i] = '0';
+            else
+                result[i] = '1';
+        }
+        
+        String Result = new String(result);
+        result_1.setString(Result);
+        
+        return result_1;
+    }
+    
+    public SpecialString stringReverse()
+    {
+        SpecialString result = new SpecialString("");
+        char[] result_1, result_2;
+        result_1 = string.toCharArray();
+        
+        result_2 = new char[result_1.length];
+        
+        for(int i=0; i < result_1.length; i++)
+        {
+            result_2[result_1.length-1-i] = result_1[i];
+        }
+        
+        String Result = new String(result_2);
+        result.setString(Result);
+        
+        
+        return result;
+    }
+    
+    public static SpecialString infiniteSequence(int number)
+    {
+        SpecialString result = new SpecialString("");
+        
+        if(number == 0)
+            return result;
+        else
+            return result.link(infiniteSequence(number-1),"0",infiniteSequence(number-1).stringReverse().stringSwitch());
+            
+       
+    }
+    
+    public void setString(String string_1)
+    {
+        string = string_1;
+    }
+    
+    public SpecialString link(SpecialString result_1, String result_2, SpecialString result_3)
+    {
+        SpecialString result = new SpecialString("");
+        String result_4;
+        result_4 = result_1.getString() + result_2 + result_3.getString();
+        
+        
+        result.setString(result_4);
+        return result;
+    }
+        
+        
+    public String getString()
+    {
+        return string;
+    }
+    
+    public String toString()
+    {
+        return string;
+    }
+    
+    public static char find(SpecialString string_1, int number)
+    {
+        char result;
+        result = string_1.getString().charAt(number-1);
+        
+        return result;
+    }
+    
+  
+}
+        
+        
+
